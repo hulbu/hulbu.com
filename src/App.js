@@ -1,27 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 import { Button, Normalize } from "@smooth-ui/core-sc";
+import ReactFullpage from "@fullpage/react-fullpage";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Normalize />
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React <Button variant="primary">Hello world!</Button>
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <ReactFullpage
+    render={({ state, fullpageApi }) => {
+      return (
+        <ReactFullpage.Wrapper>
+          <Normalize />
+          <div className="section">
+            <p>Section 1 (welcome to fullpage.js)</p>
+            <Button onClick={() => fullpageApi.moveSectionDown()}>
+              Click me to move down
+            </Button>
+          </div>
+          <div className="section">
+            <p>Section 2</p>
+          </div>
+        </ReactFullpage.Wrapper>
+      );
+    }}
+  />
+);
 
 export default App;
